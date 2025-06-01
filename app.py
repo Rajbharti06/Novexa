@@ -8,18 +8,16 @@ import ffmpeg
 from langdetect import detect
 import pysrt
 from datetime import timedelta
-from transformers import pipeline, AutoModelForSpeechSeq2Seq, AutoProcessor
-import torch
 from tqdm import tqdm
 from faster_whisper import WhisperModel
-from deep_translator import GoogleTranslator, DeepL, MyMemoryTranslator
+from deep_translator import GoogleTranslator, MyMemoryTranslator
 from googletrans import Translator
 from pydub import AudioSegment
 import numpy as np
+import torch
 from typing import Dict, List, Optional
 import shutil
 from gtts import gTTS
-import base64
 import io
 
 # Set page config with custom theme
@@ -123,13 +121,9 @@ def load_models():
         "fallback": Translator()
     }
     
-    # Load text-to-speech model
-    tts_model = pipeline("text-to-speech", "microsoft/speecht5_tts")
-    
     return {
         "whisper": whisper_model,
-        "translators": translators,
-        "tts": tts_model
+        "translators": translators
     }
 
 class AudioProcessor:
@@ -278,7 +272,6 @@ class CaptionGenerator:
     def __init__(self, models):
         self.whisper = models["whisper"]
         self.translators = models["translators"]
-        self.tts = models["tts"]
     
     def generate_captions(self, audio_path: str, language: str = None) -> tuple[Optional[Dict], Optional[str]]:
         """Generate captions with enhanced language detection."""
@@ -318,9 +311,8 @@ class CaptionGenerator:
                     return text
 
     def generate_speech(self, text: str, lang: str) -> Optional[bytes]:
-        """Generate speech from text."""
+        """Generate speech from text using gTTS."""
         try:
-            # Use gTTS for wide language support
             tts = gTTS(text=text, lang=lang)
             audio_bytes = io.BytesIO()
             tts.write_to_fp(audio_bytes)

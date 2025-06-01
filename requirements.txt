@@ -1,25 +1,4 @@
-# Core packages (most already installed)
-# openai-whisper - already installed
-# pytube - already installed
-# pysrt - already installed
-# streamlit - already installed
-# torch - already installed
-# transformers - already installed
-# ffmpeg-python - already installed
-# langdetect - already installed
-# tqdm - already installed
-# numpy - already installed
-
-# Additional required packages
-deep-translator>=1.11.4  # for better translation support
-python-dotenv>=1.0.0    # for environment variables
-faster-whisper>=0.9.0   # faster version of whisper (optional)
-moviepy>=1.0.3          # for video processing
-pydub>=0.25.1           # for advanced audio processing
-googletrans>=3.1.0a0    # alternative translation backend
-stable-ts>=2.19.0       # stable timestamps for better caption sync
-
-# Updated packages
+# Core dependencies
 streamlit>=1.24.0
 openai-whisper>=20231117
 pytube>=15.0.0
@@ -29,7 +8,6 @@ torch>=2.0.0
 torchaudio>=2.0.0
 numpy>=1.24.0
 faster-whisper>=0.9.0
-transformers>=4.30.0
 deep-translator>=1.11.4
 googletrans>=3.1.0a0
 pydub>=0.25.1
