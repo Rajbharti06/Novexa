@@ -17,4 +17,26 @@ faster-whisper>=0.9.0   # faster version of whisper (optional)
 moviepy>=1.0.3          # for video processing
 pydub>=0.25.1           # for advanced audio processing
 googletrans>=3.1.0a0    # alternative translation backend
-stable-ts>=2.19.0       # stable timestamps for better caption sync 
+stable-ts>=2.19.0       # stable timestamps for better caption sync
+
+# Updated packages
+streamlit>=1.24.0
+openai-whisper>=20231117
+pytube>=15.0.0
+ffmpeg-python>=0.2.0
+pysrt>=1.1.2
+torch>=2.0.0
+torchaudio>=2.0.0
+numpy>=1.24.0
+faster-whisper>=0.9.0
+transformers>=4.30.0
+deep-translator>=1.11.4
+googletrans>=3.1.0a0
+pydub>=0.25.1
+langdetect>=1.0.9
+gTTS>=2.3.2
+requests>=2.31.0
+
+# Optional dependencies for better performance
+cuda-python  # For GPU support
+librosa>=0.10.1  # For advanced audio processing 
